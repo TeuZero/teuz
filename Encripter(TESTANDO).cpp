@@ -271,7 +271,7 @@ int main(int argc, char** argv) {
 						buffer[p+16] = loopOffsetEnc2[1];
 						buffer[p+17] = loopOffsetEnc2[3];
 									
-						buffer[p+18] = 0xEB;
+						buffer[p+18] = 0xE9;
 						
 						buffer[p+19] = entryPointOriginal2[0];
 						buffer[p+20] = entryPointOriginal2[1];
