@@ -181,10 +181,10 @@ int main(int argc, char** argv) {
 	*	
 	*/
 		
-	DWORD offsetEntryPointEndCode = terminateS - bytesLivre - ids->addressCru + (ids->addressV+38); 
-	DWORD offsetSecionDados = inh->OptionalHeader.ImageBase+idd->addressCru + idd->addressV;
-	DWORD terminateDd = inh->OptionalHeader.ImageBase+idd->addressCru + idd->addressV  + idd->tamCru - 38;
-	DWORD loopOffsetEnc = offsetEntryPointEndCode - 1;
+	DWORD offsetEntryPointEndCode = terminateS - bytesLivre - ids->addressCru + (ids->addressV+32); 
+	DWORD offsetSecionDados = inh->OptionalHeader.ImageBase + idd->addressV;
+	DWORD terminateDd = inh->OptionalHeader.ImageBase+idd->addressV  + idd->tamCru;
+	DWORD loopOffsetEnc = offsetEntryPointEndCode + 5;
 	DWORD entryPointV = inh->OptionalHeader.ImageBase+offsetEntryPointEndCode;
 	DWORD entryPointOriginal = inh->OptionalHeader.ImageBase + inh->OptionalHeader.AddressOfEntryPoint;
 	
@@ -245,37 +245,38 @@ int main(int argc, char** argv) {
 			for(;offset < length;p++){
 				offset++;
 				//printf("\n%X",offsety);
-				if(p == (terminateS - bytesLivre) +38){
+				if(p == (terminateS - bytesLivre) +32){
 					//printf("\nacou %X",offsety);
 					offset++;
-						buffer[p+1] = 0xB8;
-						buffer[p+2] = offsetSecionDados2[0];
-						buffer[p+3] = offsetSecionDados2[1];
-						buffer[p+4] = offsetSecionDados2[2];
-						buffer[p+5] = offsetSecionDados2[3];
+						buffer[p] = 0xB8;
+						buffer[p+1] = offsetSecionDados2[0];
+						buffer[p+2] = offsetSecionDados2[1];
+						buffer[p+3] = offsetSecionDados2[2];
+						buffer[p+4] = offsetSecionDados2[3];
 						
-						buffer[p+6] = 0x80;
-						buffer[p+7] = 0x30;
-						buffer[p+8] = 0xFF;
-						buffer[p+9] = 0x40;
+						buffer[p+5] = 0x80;
+						buffer[p+6] = 0x30;
+						buffer[p+7] = 0xFF;
+						buffer[p+8] = 0x40;
 						
 			
-						buffer[p+10] = 0x3D;
-						buffer[p+11] = terminateD2[0];
-						buffer[p+12] = terminateD2[1];
-						buffer[p+14] = terminateD2[3];
+						buffer[p+9] = 0x3D;
+						buffer[p+10] = terminateD2[0];
+						buffer[p+11] = terminateD2[1];
+						buffer[p+12] = terminateD2[2];
+						buffer[p+13] = terminateD2[3];
 						
-						buffer[p+15] = 0x7E;
-						buffer[p+16] = loopOffsetEnc2[0];
-						buffer[p+17] = loopOffsetEnc2[1];
-						buffer[p+19] = loopOffsetEnc2[3];
+						buffer[p+14] = 0x7E;
+						buffer[p+15] = loopOffsetEnc2[0];
+						buffer[p+16] = loopOffsetEnc2[1];
+						buffer[p+17] = loopOffsetEnc2[3];
 									
-						buffer[p+20] = 0x68;
+						buffer[p+18] = 0x68;
 						
-						buffer[p+21] = entryPointOriginal2[3];
-						buffer[p+22] = entryPointOriginal2[2];
-						buffer[p+23] = entryPointOriginal2[1];
-						buffer[p+24] = entryPointOriginal2[0];
+						buffer[p+19] = entryPointOriginal2[0];
+						buffer[p+20] = entryPointOriginal2[1];
+						buffer[p+21] = entryPointOriginal2[2];
+						buffer[p+22] = entryPointOriginal2[3];
 						offset++;
 						/*
 						if( p == r2 - 2){
