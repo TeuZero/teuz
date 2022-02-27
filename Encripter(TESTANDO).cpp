@@ -277,15 +277,7 @@ int main(int argc, char** argv) {
 						buffer[p+20] = entryPointOriginal2[1];
 						buffer[p+21] = entryPointOriginal2[2];
 						buffer[p+22] = entryPointOriginal2[3];
-						offset++;
-						/*
-						if( p == r2 - 2){
-						printf("\nachou %X",offsety);
-							break;
-						
-					}
-					break;
-					*/
+						offset++;			
 				}
 			}
 		}
