@@ -186,8 +186,9 @@ int main(int argc, char** argv) {
 	DWORD terminateDd = inh->OptionalHeader.ImageBase+idd->addressV  + idd->tamCru;
 	DWORD loopOffsetEnc = offsetEntryPointEndCode + 17;
 	DWORD entryPointV = inh->OptionalHeader.ImageBase+offsetEntryPointEndCode;
-	DWORD entryPointOriginal = inh->OptionalHeader.ImageBase + inh->OptionalHeader.AddressOfEntryPoint;
-	
+	//DWORD entryPointOriginal = inh->OptionalHeader.ImageBase + inh->OptionalHeader.AddressOfEntryPoint;
+	DWORD entryPointOriginal = inh->OptionalHeader.AddressOfEntryPoint - offsetEntryPointEndCode -18 - 5;
+		
 	printf("\n================== Necessary informations  ==================\n\n");
 	
 	std::cout << " [+] EntryPointer Original: 0x" << std::hex << entryPointOriginal << std::endl;	
