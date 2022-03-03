@@ -236,7 +236,7 @@ int main(int argc, char** argv) {
 	for(int p =0;p < length;p++){
 		offset++;
 		if (p == mz->e_lfanew+40){
-			//printf("\n entry: 0x%X%X%X%X",enc[p],enc[p+1],enc[p+2],enc[p+3]);
+			
 			buffer[p] = offsetEntryPointEndCode2[0];
 			buffer[p+1] = offsetEntryPointEndCode2[1];
 			buffer[p+2] = offsetEntryPointEndCode2[2];	
@@ -244,9 +244,9 @@ int main(int argc, char** argv) {
 			offset++;
 			for(;offset < length;p++){
 				offset++;
-				//printf("\n%X",offsety);
+				
 				if(p == (terminateS - bytesLivre) +32){
-					//printf("\nacou %X",offsety);
+				
 					offset++;
 						buffer[p] = 0xB8;
 						buffer[p+1] = offsetSecionDados2[0];
