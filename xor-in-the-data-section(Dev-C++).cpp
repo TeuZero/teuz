@@ -212,23 +212,23 @@ int main(int argc, char** argv) {
 	scanf("%x",&entryPointOriginal2);
 	std::cout << std::endl;
 	
-	std::cout << " [*] Digite o novo EntryPointer aqui: ";
+	std::cout << " [*] Digite o novo EntryPointer aqui: 0x";
 	scanf("%x",&offsetEntryPointEndCode2);
 	std::cout << std::endl;
 	 
-	std::cout << " [*] Digite Offset Virtual da seção de dados aqui: " ;
+	std::cout << " [*] Digite Offset Virtual da seção de dados aqui: 0x" ;
 	scanf("%x",&offsetSecionDados2);
 	std::cout << std::endl;
 	
-	std::cout << " [*] Digite onde a Seção de dados termina: "  ;
+	std::cout << " [*] Digite onde a Seção de dados termina: 0x"  ;
 	scanf("%x",&terminateD2);
 	std::cout << std::endl;
 	
-	std::cout << " [+] Digite Offset virtual do loop do Encripter aqui: " ;
+	std::cout << " [+] Digite Offset virtual do loop do Encripter aqui: 0x" ;
 	scanf("%x",&loopOffsetEnc2);
 	std::cout << std::endl;
 	
-	std::cout << " [+] Digite EntryPointerV: " ;
+	std::cout << " [+] Digite EntryPointerV: 0x" ;
 	scanf("%x",&entryPointV2);
 	std::cout << std::endl;
 	
@@ -244,9 +244,7 @@ int main(int argc, char** argv) {
 			offset++;
 			for(;offset < length;p++){
 				offset++;
-				
 				if(p == (terminateS - bytesLivre) +32){
-				
 					offset++;
 						buffer[p] = 0xB8;
 						buffer[p+1] = offsetSecionDados2[0];
